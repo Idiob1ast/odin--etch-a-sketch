@@ -1,6 +1,6 @@
 // Grid dimensions
-const grid_columns = 16;
-const grid_rows = 16;
+const grid_columns = 20;
+const grid_rows = 20;
 
 // Cache "container" div to DOM
 const container_div = document.querySelector(".container");
@@ -9,7 +9,7 @@ const container_div = document.querySelector(".container");
 const grid_div = document.createElement("div");
 grid_div.classList.add("grid");
 
-// Create the grid columns
+// Create the grid columns and rows
 for (let i = 0; i < grid_columns; i++) {
   let grid_column = document.createElement("div");
   grid_column.classList.add("column");
@@ -18,7 +18,11 @@ for (let i = 0; i < grid_columns; i++) {
   for (let j = 0; j < grid_rows; j++) {
     let grid_cell = document.createElement("div");
     grid_cell.classList.add("cell");
-    grid_cell.innerText = `${i + 1}-${j + 1}`;
+
+    // Hover state event listener
+    grid_cell.addEventListener("mouseenter", function () {
+      this.classList.add("hover");
+    });
     grid_column.appendChild(grid_cell);
   }
   grid_div.appendChild(grid_column); // Append the columns to the grid
